@@ -23,7 +23,13 @@
 
 ### 1. 配置脚本
 
-编辑 `c1pro_control.bat` 文件顶部的配置区：
+复制配置示例文件并修改：
+
+```cmd
+copy config.bat.example config.bat
+```
+
+然后编辑 `config.bat` 文件：
 
 ```batch
 :: 插座局域网 IP (路由器管理页面查看)
@@ -32,6 +38,8 @@ set "PLUG_IP=192.168.1.100"
 :: 插座 SN 码, 去掉前导0
 set "SN_RAW=37007965269"
 ```
+
+⚠️ **安全提示**：`config.bat` 包含敏感信息，已被添加到 .gitignore，请勿提交到仓库！
 
 ### 2. 获取设备 SN 码
 
@@ -147,9 +155,18 @@ key = MD5(SN_RAW + "==smart-plug==" + TIMESTAMP)
 - **数据格式**：JSON
 - **依赖工具**：curl（网络请求）、PowerShell（时间戳/JSON处理）
 
+## 项目改进说明
+
+本项目已进行以下改进：
+- ✅ 添加了 `.gitignore` 文件，排除日志和临时文件
+- ✅ 统一了文件名（`c1pro.bat` → `c1pro_control.bat`）
+- ✅ 添加了外部配置文件支持（`config.bat.example`）
+- ✅ 添加了 MIT 许可证
+- ✅ 增加了安全提示，防止敏感信息泄露
+
 ## 许可证
 
-本项目仅供学习和个人使用。
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件。
 
 ## 相关链接
 
