@@ -36,7 +36,8 @@ for /f "delims=" %%h in ('powershell -NoProfile -Command "$s=[System.Text.Encodi
 :: ---------- 函数 ----------
  
 :LOG
-echo [%date% %time%] %* >> "%LOGFILE%"
+for /f "delims=" %%t in ('powershell -NoProfile -Command "Get-Date -Format 'yyyy-MM-dd HH:mm:ss'"') do set "LOG_TIMESTAMP=%%t"
+echo [%LOG_TIMESTAMP%] %* >> "%LOGFILE%"
 goto :eof
  
 :CLEANUP
